@@ -91,7 +91,7 @@ public class Main {
         }
     }
 
-    //Функция для определения типа числа - арабскоу или римское
+    //Функция для определения типа числа - арабское или римское
     static int type(String string){
         try {
             Integer.parseInt(string);
@@ -106,27 +106,26 @@ public class Main {
     числами в римской системе счисления
      */
     static int romanian(String string){
-        int five = string.indexOf("V");
-        int ten = string.indexOf("X");
-        if (five != -1){
+        int five_position = string.indexOf("V");
+        int ten_position = string.indexOf("X");
+        if (five_position != -1){
             if (string.length() == 1){
                 return 5;
             } else{
-                char[] array = string.toCharArray();
+                char[] number_array = string.toCharArray();
                 int result = 5;
-                int position = string.indexOf("V");
-                for (int i = 0; i < array.length; i++){
-                    String tmp = "" + array[i];
+                for (int i = 0; i < number_array.length; i++){
+                    String tmp = "" + number_array[i];
                     Romanian number = Romanian.valueOf(tmp);
-                    if (i < position & array[i] != 'V'){
+                    if (i < five_position & number_array[i] != 'V'){
                         result -= number.ordinal() + 1;
-                    } else if (i > position & array[i] != 'V'){
+                    } else if (i > five_position & number_array[i] != 'V'){
                         result += number.ordinal() + 1;
                     }
                 }
                 return result;
             }
-        } else if (ten != -1){
+        } else if (ten_position != -1){
             if (string.length() == 1){
                 return 10;
             } else{
